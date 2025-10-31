@@ -1,0 +1,14 @@
+header {
+  text-align: center;
+  margin-top: 24px;
+}
+
+h1 {
+  font-size: 2rem;
+  margin-bottom: 8px;
+}
+
+p {
+  font-size: 0.9rem;
+  color: #666;
+}

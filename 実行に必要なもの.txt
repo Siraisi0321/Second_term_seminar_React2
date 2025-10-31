@@ -1,0 +1,8 @@
+前提
+node_modules(削除済み)=>「npm install」でインストール可能
+
+1.vsocde上でこのファイルを実行
+2.ターミナルでmy-react-appの階層にいなければcdコマンドで移動
+3.「npm run dev」で実行
+
+4.サイトの閲覧が終了した際は

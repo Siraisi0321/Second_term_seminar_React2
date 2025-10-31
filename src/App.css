@@ -1,0 +1,70 @@
+#root {
+  margin: 0 auto;
+}
+
+#body {
+  text-align: center;
+}
+
+img {
+  width: 100%;
+}
+
+.photo-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(14rem, 1fr));
+  gap: 1rem;
+  margin: 1rem;
+}
+
+/* 画像リストを中央に配置・整列 */
+/*.photo-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+  justify-content: center;
+  margin-top: 24px;
+}*/
+
+/* 画像サイズとスタイル */
+/*.photo-list img {
+  width: 200px;
+  height: auto;
+  border-radius: 8px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease;
+}*/
+
+/* ホバー時に拡大 */
+/*.photo-list img:hover {
+  transform: scale(1.05);
+}
+*/
+
+/* フォームの見た目を整える */
+form {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+  gap: 8px;
+}
+
+input[type="text"] {
+  padding: 8px;
+  width: 200px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+button {
+  padding: 8px 12px;
+  background-color: #0077cc;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #005fa3;
+}
