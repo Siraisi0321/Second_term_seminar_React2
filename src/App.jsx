@@ -1,36 +1,54 @@
 import { useState } from "react";
 import axios from "axios";
-import Title from "./components/Title.jsx";
+import Title from "./components/Title/Title.jsx";
 import Form from "./components/Form.jsx";
 import Results from "./components/Results.jsx";
-import Foot from "./components/Foot.jsx"; 
+import Foot from "./components/Foot.jsx";
 import "./App.css";
+import { Route, Routes } from "react-router-dom";
+import History from './components/history.jsx';
+import Favorite from './components/favorites.jsx';
+
 
 function App() {
   const [word, setWord] = useState("");
   const [photo, setPhoto] = useState([]);
 
-  const getPhotData = (e) => { 
+  const getPhotData = (e) => {
     e.preventDefault();
-    
-  if (!word.trim()) {
-    alert("検索キーワードを入力してください。");
-    return;
-  }
+
+    if (!word.trim()) {
+      alert("検索キーワードを入力してください。");
+      return;
+    }
 
     axios
-    .get(`https://api.unsplash.com/search/photos?query=${word}&client_id=8DnDrRE1szXcnCxiOY8ciV-MHmIq_sMe0Az73K4Ntow`)
-    .then((res) => { console.log(res.data.results);setPhoto(res.data.results);})
-    .catch((err) => console.error(err));
+      .get(`https://api.unsplash.com/search/photos?query=${word}&client_id=8DnDrRE1szXcnCxiOY8ciV-MHmIq_sMe0Az73K4Ntow`)
+      .then((res) => { console.log(res.data.results); setPhoto(res.data.results); })
+      .catch((err) => console.error(err));
   };
 
   return (
-    <div className="App">
-      <Title />
-      <Form setWord={setWord} getPhotoData={getPhotData} />
-      <Results photo={photo} />
-      <Foot />
-    </div>
+    <BrowserRouter>
+      <div className="App">
+        <header>
+          <Title />
+        </header>
+
+        <main>
+          <Form setWord={setWord} getPhotoData={getPhotData} />
+          <Results photo={photo} />
+          <Routes>
+            <Route path="/history" element={<History />} />
+            <Route path="/favorite" element={<Favorite />} />
+          </Routes>
+        </main>
+
+        <footer>
+          <Foot />
+        </footer>
+      </div>
+    </BrowserRouter>
   );
 }
 

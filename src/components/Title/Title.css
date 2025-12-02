@@ -12,3 +12,12 @@ p {
   font-size: 0.9rem;
   color: #666;
 }
+
+ul {
+  display: flex;
+}
+
+li{
+  list-style: none;
+  margin-left: 20px;
+}
