@@ -1,0 +1,30 @@
+.title-nav {
+ background-color: #00dfb2;
+ padding: 1rem;
+ box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+ 
+ /* --- 変更点：縦方向に並べ、中央に配置 --- */
+ display: flex;
+ flex-direction: column; /* 縦方向に要素を並べる */
+ justify-content: center; /* 主軸（縦）で中央揃え */
+ align-items: center; /* 交差軸（横）で中央揃え */
+ /* -------------------------------------- */
+ 
+ color: white;
+ margin-top: 24px;
+}
+
+h1 {
+ font-size: 2rem;
+ font-weight: 700;
+ letter-spacing: 0.05em;
+ margin-bottom: 1rem; 
+}
+
+.nav-links {
+  padding-left: 0%;
+ justify-content: center;
+ display: flex;
+ gap: 1rem;
+ list-style: none;
+}

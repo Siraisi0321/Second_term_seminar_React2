@@ -1,18 +1,20 @@
 import { useState } from "react";
 import axios from "axios";
-import Title from "./components/Title/Title.jsx";
-import Form from "./components/Form.jsx";
-import Results from "./components/Results.jsx";
-import Foot from "./components/Foot.jsx";
+import Head from "./components/Header/Header.jsx";
+import Form from "./components/pages/Form.jsx";
+import Results from "./components/pages/Results.jsx";
+import Foot from "./components/Footer/Foot.jsx";
 import "./App.css";
-import { Route, Routes } from "react-router-dom";
-import History from './components/history.jsx';
-import Favorite from './components/favorites.jsx';
+import { BrowserRouter, Route, Routes } from "react-router-dom";
+import History from './components/pages/history.jsx';
+import Favorite from './components/pages/favorites.jsx';
+import DetailPage from "./components/pages/DetailPage.jsx";
 
 
 function App() {
   const [word, setWord] = useState("");
   const [photo, setPhoto] = useState([]);
+  const [loading, setLoading] = useState(false);
 
   const getPhotData = (e) => {
     e.preventDefault();
@@ -22,33 +24,38 @@ function App() {
       return;
     }
 
+    setLoading(true);
+
     axios
       .get(`https://api.unsplash.com/search/photos?query=${word}&client_id=8DnDrRE1szXcnCxiOY8ciV-MHmIq_sMe0Az73K4Ntow`)
-      .then((res) => { console.log(res.data.results); setPhoto(res.data.results); })
-      .catch((err) => console.error(err));
+      .then((res) => { console.log(res.data.results); setPhoto(res.data.results); setLoading(false); })
+      .catch((err) => { console.error(err); setLoading(false); });
   };
 
   return (
-    <BrowserRouter>
-      <div className="App">
+    <div className="App">
+      <BrowserRouter>
         <header>
-          <Title />
+          <Head />
         </header>
 
         <main>
-          <Form setWord={setWord} getPhotoData={getPhotData} />
-          <Results photo={photo} />
-          <Routes>
-            <Route path="/history" element={<History />} />
-            <Route path="/favorite" element={<Favorite />} />
-          </Routes>
+          <div>
+            <Routes>
+              <Route path="/" element={<Form setWord={setWord} getPhotoData={getPhotData} photo={photo} loading={loading} />} />
+              <Route path="/Results" element={<Results photo={photo} />} />
+              <Route path="/Favorites" element={<Favorite />} />
+              <Route path="/History" element={<History />} />
+              <Route path="/photo:id" element={<DetailPage />} />
+            </Routes>
+          </div>
         </main>
 
         <footer>
           <Foot />
         </footer>
-      </div>
-    </BrowserRouter>
+      </BrowserRouter>
+    </div>
   );
 }
 
