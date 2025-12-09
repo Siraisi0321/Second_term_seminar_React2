@@ -1,6 +1,7 @@
 import "./Form.css";
 import searchIcon from "/Images/search_icon.png";
 import Results from "./Results";
+import LoadingSpinner from "./LoadingSpinner.jsx"
 
 const Form = ({ setWord, getPhotoData, photo, loading }) => {
   return (
