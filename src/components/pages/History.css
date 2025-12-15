@@ -1,0 +1,84 @@
+/* History.css */
+
+.history-container {
+  padding: 2rem; /* p-8 */
+  max-width: 42rem; /* max-w-2xl */
+  margin-left: auto; /* mx-auto */
+  margin-right: auto; /* mx-auto */
+}
+
+/* 検索履歴見出し (h2) */
+.history-container h2 {
+  font-size: 1.5rem; /* text-2xl */
+  font-weight: 700; /* font-bold */
+  margin-bottom: 1rem; /* mb-4 */
+  color: #4a5568; /* text-gray-700 */
+}
+
+/* 履歴リストアイテムの親 (ul) */
+.history-container ul {
+  margin-bottom: 1rem; /* mb-4 */
+}
+
+/* リストアイテム間のスペース (space-y-2) */
+.history-container ul > li:not(:last-child) {
+  margin-bottom: 0.5rem; /* space-y-2 */
+}
+
+/* 個々のリストアイテム (li) */
+.history-container li {
+  background-color: #fff; /* bg-white */
+  padding: 0.75rem; /* p-3 */
+  border-radius: 0.25rem; /* rounded */
+  box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05); /* shadow-sm */
+  display: flex; /* flex */
+  justify-content: space-between; /* justify-between */
+  align-items: center; /* items-center */
+  transition-property: background-color; /* transition */
+  transition-duration: 150ms; /* transition */
+}
+
+/* リストアイテムのホバー効果 */
+.history-container li:hover {
+  background-color: #f7fafc; /* hover:bg-gray-50 */
+}
+
+/* 履歴キーワードのテキスト (span) */
+.history-container li span {
+  color: #2d3748; /* text-gray-800 */
+}
+
+/* 再検索ボタン */
+.history-container button.text-blue-500 {
+  color: #4299e1; /* text-blue-500 */
+  font-size: 0.875rem; /* text-sm */
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+}
+
+/* 再検索ボタンのホバー効果 */
+.history-container button.text-blue-500:hover {
+  color: #3182ce; /* hover:text-blue-700 */
+}
+
+/* 履歴を全て削除ボタン */
+.history-container button.text-red-500 {
+  color: #f56565; /* text-red-500 */
+  font-size: 0.875rem; /* text-sm */
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+}
+
+/* 履歴を全て削除ボタンのホバー効果 */
+.history-container button.text-red-500:hover {
+  color: #e53e3e; /* hover:text-red-700 */
+}
+
+/* 履歴がない場合のメッセージ */
+.history-container p {
+  color: #a0aec0; /* text-gray-500 */
+}

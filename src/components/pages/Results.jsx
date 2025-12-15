@@ -1,3 +1,6 @@
+import React from "react";
+import { Link } from 'react-router-dom'
+
 const Results = ({ photo }) => {
   if (!Array.isArray(photo) || photo.length === 0) {
     return <p>No photo found.</p>;
@@ -6,9 +9,9 @@ const Results = ({ photo }) => {
   return (
     <div className="photo-list">
       {photo.map((singleData, index) => (
-        <a href={singleData.links.html} key={index}>{" "}
+        <Link to={`/photo/${singleData.id}`} key={index}>{" "}
           <img src={singleData.urls.regular} alt={singleData.alt_description} />
-        </a>
+        </Link>
       ))}
     </div>
   );
