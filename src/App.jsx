@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import axios from "axios";
 import Head from "./components/Header/Header.jsx";
 import Form from "./components/pages/Form.jsx";
@@ -81,7 +81,6 @@ function App() {
         console.log(res.data.results);
         setPhoto(res.data.results);
         setLoading(false);
-
         // ★ 検索成功時に履歴を保存
         saveSearchHistory(keywordToSearch);
       })

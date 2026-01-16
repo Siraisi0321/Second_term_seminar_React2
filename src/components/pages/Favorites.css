@@ -1,0 +1,28 @@
+.fav-button {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 7px 20px;
+  border-radius: 25px; /* 丸みをつけてモダンに */
+  border: 2px solid #ff4b5c;
+  background-color: white;
+  color: #ff4b5c;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.5s ease;
+  margin-bottom: 20px;
+}
+
+.fav-button:hover {
+  transform: translateY(-2px); /* 浮き上がるアニメーション */
+  box-shadow: 0 4px 12px rgba(255, 75, 92, 0.2);
+}
+
+.fav-button.active {
+  background-color: #ff4b5c;
+  color: white;
+}
+
+.fav-button .icon {
+  font-size: 1.2rem;
+}

@@ -1,0 +1,13 @@
+/* 画面の下端に固定し、幅を画面全体にする */
+footer {
+  /*位置*/
+  width: 100%;
+  padding: 20px 0px;
+  padding-bottom: 0%;
+  /*見た目*/
+  font-size: 0.8rem;
+  background-color: rgba(255, 255, 255, 0.9); /* 少し透過させると圧迫感が減ります */
+  border-top: 1px solid #eee;
+  text-align: center;
+  margin-top: auto;
+}

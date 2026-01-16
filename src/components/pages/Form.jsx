@@ -6,6 +6,7 @@ import LoadingSpinner from "./LoadingSpinner.jsx"
 const Form = ({ setWord, getPhotoData, photo, loading }) => {
   return (
     <>
+      <h2 className="history-title">検索</h2>
     <form>
       <input type = "text" name = "keyword" placeholder = "キーワードを入力"
       onChange={(e) => setWord(e.target.value)}/>

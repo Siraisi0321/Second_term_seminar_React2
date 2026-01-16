@@ -1,10 +1,16 @@
 /* コンテナ全体のスタイル */
 .history-container {
-  max-width: 600px;
-  margin: 20px auto;
-  padding: 20px;
+  /* 最小幅を設定しつつ、通常は80%の幅を持たせる */
+  width: 80%;
+  min-width: 350px; 
+  /* ノートPC等の大画面で広がりすぎないよう上限を設定 */
+  max-width: 1000px; 
+  
+  margin: 0px auto;
+  padding: 0px 0px 20px;
   background-color: #f9f9f9;
   border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1); /* 少し影をつけると綺麗に見えます */
 }
 
 /* 履歴リストのスタイル */
@@ -15,32 +21,38 @@
 
 .history-item {
   display: flex;
-  justify-content: space-between; /* キーワードとボタンを両端に */
+  justify-content: flex-start; /* キーワードとボタンを両端に */
   align-items: center;
-  padding: 10px;
+  padding: 0.7rem;
+  padding-left: 1.5rem;
   border-bottom: 1px solid #ddd;
   background-color: #fff;
 }
 
 .history-keyword {
   font-weight: bold;
-  flex-grow: 1; /* キーワード部分を広げる */
+  flex-grow: 1;      /* 残りのスペースをすべて占有してボタンを右に押し出す */
+  text-align: left;  /* 明示的に左寄せ */
+  font-size: 1.1rem; /* 文字を少し見やすく */
+  color: #333;
 }
 
 /* ボタンを並べるコンテナ */
 .history-actions {
   display: flex;
-  gap: 8px; /* ボタン同士の間隔 */
+  gap: 12px;
+  margin-left: 20px; /* テキストとの間に余白を作る */
 }
 
 /* 再検索ボタン */
 .search-button {
-  padding: 5px 12px;
+  padding: 6px 16px;
   background-color: #00dfb2;
   color: white;
   border: none;
   border-radius: 4px;
   cursor: pointer;
+  white-space: nowrap; /* ボタン内の改行を防ぐ */
 }
 
 .search-button:hover {
@@ -49,12 +61,13 @@
 
 /* 個別削除ボタン */
 .delete-item-button {
-  padding: 5px 12px;
+  padding: 6px 16px;
   background-color: transparent;
   color: #ff4d4f;
   border: 1px solid #ff4d4f;
   border-radius: 4px;
   cursor: pointer;
+  white-space: nowrap; /* ボタン内の改行を防ぐ */
   transition: all 0.2s;
 }
 

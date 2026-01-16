@@ -4,13 +4,12 @@ import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import LoadingSpinner from "./LoadingSpinner.jsx"; // Assuming path
 
-const DetailPage = () => {
+const DetailPage = ({ favoriteIds, toggleFavorite }) => {
   const { id } = useParams(); // URLからIDを取得
   const [photoDetail, setPhotoDetail] = useState(null);
   const [loading, setLoading] = useState(true);
 
-  // APIアクセスキーとベースURLを定義 (App.jsxなどから渡す方が望ましいがここでは直接定義)
-  const API_KEY = import.meta.env.VITE_ACCESS_KEY;
+  const API_KEY = "8DnDrRE1szXcnCxiOY8ciV-MHmIq_sMe0Az73K4Ntow";
   console.log("API Key:", API_KEY);
 
   useEffect(() => {
@@ -20,6 +19,9 @@ const DetailPage = () => {
         // Unsplashの単一画像取得エンドポイント
         const url = `https://api.unsplash.com/photos/${id}?client_id=${API_KEY}`;
         const response = await fetch(url);
+        
+        if (!response.ok) throw new Error("APIリクエストに失敗しました");
+        
         const data = await response.json();
         setPhotoDetail(data);
       } catch (error) {
@@ -32,15 +34,17 @@ const DetailPage = () => {
     if (id) {
       fetchDetail();
     }
-  }, [id, API_KEY]); // idが変わるたびに実行
+  }, [id]); // idが変わるたびに実行
 
   if (loading) {
     return <div className="text-center p-8"><LoadingSpinner /><p>詳細データを読み込み中です...</p></div>;
   }
 
-  if (!photoDetail) {
+  if (!photoDetail || !photoDetail.urls) {
     return <div className="text-center p-8">画像が見つかりませんでした。</div>;
   }
+
+  const isFavorited = favoriteIds.includes(id);
 
   // 取得した詳細データを表示
   return (
@@ -61,8 +65,8 @@ const DetailPage = () => {
       <button
         onClick={() => toggleFavorite(id)}
         className={`px-4 py-2 rounded transition ${isFavorited
-            ? 'bg-yellow-500 text-white hover:bg-yellow-600'
-            : 'bg-gray-200 text-gray-700 hover:bg-gray-300'
+          ? 'bg-yellow-500 text-white hover:bg-yellow-600'
+          : 'bg-gray-200 text-gray-700 hover:bg-gray-300'
           }`}
       >
         {isFavorited ? '★ お気に入り解除' : '☆ お気に入りに追加'}
