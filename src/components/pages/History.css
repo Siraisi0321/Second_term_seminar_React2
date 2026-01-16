@@ -1,84 +1,82 @@
-/* History.css */
-
+/* コンテナ全体のスタイル */
 .history-container {
-  padding: 2rem; /* p-8 */
-  max-width: 42rem; /* max-w-2xl */
-  margin-left: auto; /* mx-auto */
-  margin-right: auto; /* mx-auto */
+  max-width: 600px;
+  margin: 20px auto;
+  padding: 20px;
+  background-color: #f9f9f9;
+  border-radius: 8px;
 }
 
-/* 検索履歴見出し (h2) */
-.history-container h2 {
-  font-size: 1.5rem; /* text-2xl */
-  font-weight: 700; /* font-bold */
-  margin-bottom: 1rem; /* mb-4 */
-  color: #4a5568; /* text-gray-700 */
+/* 履歴リストのスタイル */
+.history-list {
+  list-style: none;
+  padding: 0;
 }
 
-/* 履歴リストアイテムの親 (ul) */
-.history-container ul {
-  margin-bottom: 1rem; /* mb-4 */
+.history-item {
+  display: flex;
+  justify-content: space-between; /* キーワードとボタンを両端に */
+  align-items: center;
+  padding: 10px;
+  border-bottom: 1px solid #ddd;
+  background-color: #fff;
 }
 
-/* リストアイテム間のスペース (space-y-2) */
-.history-container ul > li:not(:last-child) {
-  margin-bottom: 0.5rem; /* space-y-2 */
+.history-keyword {
+  font-weight: bold;
+  flex-grow: 1; /* キーワード部分を広げる */
 }
 
-/* 個々のリストアイテム (li) */
-.history-container li {
-  background-color: #fff; /* bg-white */
-  padding: 0.75rem; /* p-3 */
-  border-radius: 0.25rem; /* rounded */
-  box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05); /* shadow-sm */
-  display: flex; /* flex */
-  justify-content: space-between; /* justify-between */
-  align-items: center; /* items-center */
-  transition-property: background-color; /* transition */
-  transition-duration: 150ms; /* transition */
-}
-
-/* リストアイテムのホバー効果 */
-.history-container li:hover {
-  background-color: #f7fafc; /* hover:bg-gray-50 */
-}
-
-/* 履歴キーワードのテキスト (span) */
-.history-container li span {
-  color: #2d3748; /* text-gray-800 */
+/* ボタンを並べるコンテナ */
+.history-actions {
+  display: flex;
+  gap: 8px; /* ボタン同士の間隔 */
 }
 
 /* 再検索ボタン */
-.history-container button.text-blue-500 {
-  color: #4299e1; /* text-blue-500 */
-  font-size: 0.875rem; /* text-sm */
-  background: none;
+.search-button {
+  padding: 5px 12px;
+  background-color: #00dfb2;
+  color: white;
   border: none;
+  border-radius: 4px;
   cursor: pointer;
-  padding: 0;
 }
 
-/* 再検索ボタンのホバー効果 */
-.history-container button.text-blue-500:hover {
-  color: #3182ce; /* hover:text-blue-700 */
+.search-button:hover {
+  background-color: #00b792;
 }
 
-/* 履歴を全て削除ボタン */
-.history-container button.text-red-500 {
-  color: #f56565; /* text-red-500 */
-  font-size: 0.875rem; /* text-sm */
-  background: none;
-  border: none;
+/* 個別削除ボタン */
+.delete-item-button {
+  padding: 5px 12px;
+  background-color: transparent;
+  color: #ff4d4f;
+  border: 1px solid #ff4d4f;
+  border-radius: 4px;
   cursor: pointer;
-  padding: 0;
+  transition: all 0.2s;
 }
 
-/* 履歴を全て削除ボタンのホバー効果 */
-.history-container button.text-red-500:hover {
-  color: #e53e3e; /* hover:text-red-700 */
+.delete-item-button:hover {
+  background-color: #ff4d4f;
+  color: white;
 }
 
-/* 履歴がない場合のメッセージ */
-.history-container p {
-  color: #a0aec0; /* text-gray-500 */
+/* 全削除ボタン */
+.clear-button {
+  margin-top: 20px;
+  background-color: transparent;
+  width: 100%;
+  padding: 10px;
+  color: rgb(0, 0, 0);
+  border: 1px solid #000;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.clear-button:hover {
+  background-color: #000;
+  color: white;
 }

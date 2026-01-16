@@ -1,7 +1,5 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-
-// CSSのインポート（仮定）
 import "./History.css";
 
 const History = ({ setWord, getPhotoData }) => {
@@ -9,18 +7,24 @@ const History = ({ setWord, getPhotoData }) => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    // ローカルストレージから履歴を読み込む
     const savedHistory = JSON.parse(localStorage.getItem('searchHistory')) || [];
     setHistoryList(savedHistory);
   }, []);
 
   const handleSearchClick = (keyword) => {
-    // 検索ワードをセット
-    //setWord(keyword);
-
     getPhotoData(null, keyword);
-    // 検索ページに遷移
     navigate('/'); 
+  };
+
+  // --- 追加：個別削除のハンドラー ---
+  const handleDeleteOne = (indexToDelete) => {
+    // 指定したインデックス以外の要素で新しい配列を作成
+    const updatedHistory = historyList.filter((_, index) => index !== indexToDelete);
+    
+    // Stateを更新
+    setHistoryList(updatedHistory);
+    // LocalStorageを更新
+    localStorage.setItem('searchHistory', JSON.stringify(updatedHistory));
   };
 
   const handleClearHistory = () => {
@@ -40,12 +44,22 @@ const History = ({ setWord, getPhotoData }) => {
             {historyList.map((keyword, index) => (
               <li key={index} className="history-item">
                 <span className="history-keyword">{keyword}</span>
-                <button 
-                  onClick={() => handleSearchClick(keyword)}
-                  className="search-button"
-                >
-                  再検索
-                </button>
+                <div className="history-actions">
+                  <button 
+                    onClick={() => handleSearchClick(keyword)}
+                    className="search-button"
+                  >
+                    再検索
+                  </button>
+                  {/* --- 追加：削除ボタン --- */}
+                  <button 
+                    onClick={() => handleDeleteOne(index)}
+                    className="delete-item-button"
+                    title="この履歴を削除"
+                  >
+                    削除
+                  </button>
+                </div>
               </li>
             ))}
           </ul>
