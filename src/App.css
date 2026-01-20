@@ -72,6 +72,21 @@ input[type="text"] {
   border-radius: 6px;
 }
 
+
+button {
+  padding: 6px 16px;
+  background-color: #00dfb2;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  white-space: nowrap; /* ボタン内の改行を防ぐ */
+}
+
+button:hover {
+  background-color: #00ad8a;
+}
+/*
 button {
   padding: 1rem 1.5rem;
   background-color: #0077cc;
@@ -83,4 +98,4 @@ button {
 
 button:hover {
   background-color: #015692;
-}
+}*/

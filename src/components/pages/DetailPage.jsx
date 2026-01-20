@@ -3,6 +3,7 @@
 import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import LoadingSpinner from "./LoadingSpinner.jsx"; // Assuming path
+import "./Favorites.css";
 
 const DetailPage = ({ favoriteIds, toggleFavorite }) => {
   const { id } = useParams(); // URLからIDを取得
@@ -19,9 +20,9 @@ const DetailPage = ({ favoriteIds, toggleFavorite }) => {
         // Unsplashの単一画像取得エンドポイント
         const url = `https://api.unsplash.com/photos/${id}?client_id=${API_KEY}`;
         const response = await fetch(url);
-        
+
         if (!response.ok) throw new Error("APIリクエストに失敗しました");
-        
+
         const data = await response.json();
         setPhotoDetail(data);
       } catch (error) {
@@ -62,14 +63,14 @@ const DetailPage = ({ favoriteIds, toggleFavorite }) => {
         <span className="font-semibold">いいね数:</span> {photoDetail.likes}
       </p>
       {/* ★ お気に入りボタンのプレースホルダー */}
+
       <button
         onClick={() => toggleFavorite(id)}
-        className={`px-4 py-2 rounded transition ${isFavorited
-          ? 'bg-yellow-500 text-white hover:bg-yellow-600'
-          : 'bg-gray-200 text-gray-700 hover:bg-gray-300'
-          }`}
+        className={`fav-button ${isFavorited ? "active" : ""}`}
+        style={{ marginTop: '10px' }}
       >
-        {isFavorited ? '★ お気に入り解除' : '☆ お気に入りに追加'}
+        <span className="icon">{isFavorited ? "★" : "★"}</span>
+        {isFavorited ? "解除" : "追加"}
       </button>
     </div>
   );

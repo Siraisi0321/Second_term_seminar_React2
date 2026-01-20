@@ -65,7 +65,7 @@ const Favorite = ({ favoriteIds, toggleFavorite }) => {
                                     className={`fav-button ${isCurrentFavorited ? "active" : ""}`}
                                     style={{ marginTop: '10px' }}
                                 >
-                                    <span className="icon">{isCurrentFavorited ? "❤️" : "🤍"}</span>
+                                    <span className="icon">{isCurrentFavorited ? "★" : "★"}</span>
                                     {isCurrentFavorited ? "解除" : "追加"}
                                 </button>
                             </div>
