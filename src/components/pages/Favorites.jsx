@@ -7,8 +7,9 @@ import "./Favorites.css";
 const Favorite = ({ favoriteIds, toggleFavorite }) => {
     const [favoritePhotos, setFavoritePhotos] = useState([]);
     const [loading, setLoading] = useState(false);
-    const API_KEY = "8DnDrRE1szXcnCxiOY8ciV-MHmIq_sMe0Az73K4Ntow";
-
+    //const API_KEY = "8DnDrRE1szXcnCxiOY8ciV-MHmIq_sMe0Az73K4Ntow";
+    const API_KEY = import.meta.env.VITE_UNSPLASH_API_KEY;
+    
     useEffect(() => {
         if (favoriteIds.length === 0) {
             setFavoritePhotos([]);

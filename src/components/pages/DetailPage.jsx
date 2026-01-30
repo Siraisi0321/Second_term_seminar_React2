@@ -10,7 +10,8 @@ const DetailPage = ({ favoriteIds, toggleFavorite }) => {
   const [photoDetail, setPhotoDetail] = useState(null);
   const [loading, setLoading] = useState(true);
 
-  const API_KEY = "8DnDrRE1szXcnCxiOY8ciV-MHmIq_sMe0Az73K4Ntow";
+  //const API_KEY = "8DnDrRE1szXcnCxiOY8ciV-MHmIq_sMe0Az73K4Ntow";
+  const API_KEY = import.meta.env.VITE_UNSPLASH_API_KEY;
   console.log("API Key:", API_KEY);
 
   useEffect(() => {

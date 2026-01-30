@@ -9,7 +9,8 @@ import { BrowserRouter, Route, Routes } from "react-router-dom";
 import History from './components/pages/history.jsx';
 import Favorite from './components/pages/favorites.jsx';
 import DetailPage from "./components/pages/DetailPage.jsx";
-
+import { db } from "./firebase";
+import { doc, setDoc, deleteDoc } from "firebase/firestore";
 
 function App() {
   const [word, setWord] = useState("");
@@ -28,13 +29,15 @@ function App() {
   }, [favoriteIds]);
 
   // お気に入りに追加/削除するトグル関数
-  const toggleFavorite = (id) => {
+  const toggleFavorite = async (id) => { // async を付ける
     setFavoriteIds(prevIds => {
       if (prevIds.includes(id)) {
-        // 既に存在すれば削除
+        // クラウドからも削除
+        deleteDoc(doc(db, "favorites", id));
         return prevIds.filter(favId => favId !== id);
       } else {
-        // 存在しなければ追加
+        // クラウドに保存！
+        setDoc(doc(db, "favorites", id), { favoritedAt: new Date() });
         return [...prevIds, id];
       }
     });
@@ -75,6 +78,9 @@ function App() {
 
     setLoading(true);
 
+    //クラウド連携なしの純粋なAPI速度
+    console.time('api');
+
     axios
       .get(`https://api.unsplash.com/search/photos?query=${keywordToSearch}&client_id=8DnDrRE1szXcnCxiOY8ciV-MHmIq_sMe0Az73K4Ntow`)
       .then((res) => {
@@ -89,7 +95,8 @@ function App() {
         setLoading(false);
       });
   };
-
+  //クラウド連携なしの純粋なAPI速度
+  console.timeEnd('api');
 
   return (
     <div className="App">
